@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Spotify AI Mood Discovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="spotify-container">
+
+        <!-- ========================================== -->
+        <!-- HOME VIEW -->
+        <!-- ========================================== -->
+        <main id="view-home" class="view-section active">
+            <!-- Header -->
+            <header class="spotify-header home-header">
+                <div class="header-left">
+                    <div class="profile-pic">F</div>
+                    <div class="header-pills">
+                        <button class="pill active">All</button>
+                        <button class="pill">Music</button>
+                        <button class="pill">Podcasts</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="scroll-content">
+                <!-- Fake Search Bar (navigates to search) -->
+                <div class="fake-search-bar" id="home-fake-search">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-secondary)"><path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.279-9.407-9.279zm-7.407 9.279c0-4.006 3.302-7.279 7.407-7.279s7.407 3.273 7.407 7.279-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.279z"></path></svg>
+                    <span>What is your mood now?</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-secondary)"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zm0 16a6.002 6.002 0 0 1-5.917-5H4a8.002 8.002 0 0 0 7.917 7h.166a8.002 8.002 0 0 0 7.917-7h-2.083A6.002 6.002 0 0 1 12 18z"></path></svg>
+                </div>
+
+                <!-- Recent Tracks List (Mock) -->
+                <div class="recent-tracks">
+                    <div class="track-row">
+                        <div class="track-img" style="background: linear-gradient(135deg, #c31432, #240b36);"></div>
+                        <div class="track-info">
+                            <div class="track-title">Dil Kaa Jo Haal Hai</div>
+                            <div class="track-artist">Abhijeet, Shreya Ghoshal</div>
+                        </div>
+                        <div class="track-dots">⋮</div>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-img" style="background: linear-gradient(135deg, #f12711, #f5af19);"></div>
+                        <div class="track-info">
+                            <div class="track-title">Hangover (From "Kick")</div>
+                            <div class="track-artist">Salman Khan, Meet Bros Anjjan, Shr...</div>
+                        </div>
+                        <div class="track-dots">⋮</div>
+                    </div>
+                    <div class="track-row">
+                        <div class="track-img" style="background: linear-gradient(135deg, #1f4037, #99f2c8);"></div>
+                        <div class="track-info">
+                            <div class="track-title">Boyfriend</div>
+                            <div class="track-artist">Karan Aujla, Ikky</div>
+                        </div>
+                        <div class="track-dots">⋮</div>
+                    </div>
+                </div>
+
+                <!-- To Get You Started (Mock) -->
+                <div class="section-block">
+                    <h2 class="section-title">To get you started</h2>
+                    <div class="horizontal-scroll">
+                        <div class="mix-card">
+                            <div class="mix-img pritam-mix">
+                                <div class="mix-label">Pritam Mix</div>
+                            </div>
+                            <p class="mix-desc">Ayushmann Khurrana, Gajendra Verma and A.R. ...</p>
+                        </div>
+                        <div class="mix-card">
+                            <div class="mix-img arijit-mix">
+                                <div class="mix-label">Arijit Singh Mix</div>
+                            </div>
+                            <p class="mix-desc">Gajendra Verma, Sachet-Parampara and Sa...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Stations (Mock) -->
+                <div class="section-block">
+                    <h2 class="section-title">Recommended Stations</h2>
+                    <div class="horizontal-scroll">
+                        <div class="station-card">
+                            <div class="station-img station-1">
+                                <span class="station-badge">RADIO</span>
+                            </div>
+                        </div>
+                        <div class="station-card">
+                            <div class="station-img station-2">
+                                <span class="station-badge">RADIO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ========================================== -->
+        <!-- SEARCH VIEW -->
+        <!-- ========================================== -->
+        <main id="view-search" class="view-section hidden">
+            <!-- Header -->
+            <header class="spotify-header search-header">
+                <div class="header-left">
+                    <div class="profile-pic">F</div>
+                    <h1 class="header-title">Search</h1>
+                </div>
+                <div class="header-right">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="var(--text-primary)"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2a6 6 0 1 1 0-12 6 6 0 0 1 0 12zM3 7.828A2 2 0 0 1 3.586 6.4L5.6 4.385A2 2 0 0 1 7.015 3.8h9.97a2 2 0 0 1 1.415.586L20.414 6.4A2 2 0 0 1 21 7.828V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7.828zM7.015 5.8a.002.002 0 0 0-.001 0L5 7.814v11.185h14V7.814L16.985 5.8H7.015z"></path></svg>
+                </div>
+            </header>
+
+            <div class="scroll-content">
+                <!-- Active Search Bar -->
+                <div class="search-input-wrapper">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#000000"><path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.279-9.407-9.279zm-7.407 9.279c0-4.006 3.302-7.279 7.407-7.279s7.407 3.273 7.407 7.279-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.279z"></path></svg>
+                    <input type="text" id="search-input" placeholder="What is your mood now?" autocomplete="off">
+                    <button id="mic-trigger-btn" class="mic-button" title="Voice Search">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="#000000"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zm0 16a6.002 6.002 0 0 1-5.917-5H4a8.002 8.002 0 0 0 7.917 7h.166a8.002 8.002 0 0 0 7.917-7h-2.083A6.002 6.002 0 0 1 12 18z"/></svg>
+                    </button>
+                </div>
+
+                <!-- Sub Navigation Tabs -->
+                <div class="search-tabs">
+                    <button class="search-tab active">AI Discovery</button>
+                </div>
+
+                <!-- Default Search State (shown before results) -->
+                <div id="search-default-state">
+                    <!-- AI Mood Prompts (Step 1) -->
+                    <div id="mood-prompt-section" class="mood-prompt-section">
+                        <h2 class="section-title text-center">What is your mood now?</h2>
+                        <div class="mood-pills">
+                            <button class="mood-pill bg-purple">Happy</button>
+                            <button class="mood-pill bg-blue">Relaxed</button>
+                            <button class="mood-pill bg-blue-dark">Energetic</button>
+                            <button class="mood-pill bg-indigo">Calm</button>
+                            <button class="mood-pill bg-violet">Romantic</button>
+                        </div>
+                    </div>
+
+                    <!-- Follow-up Questions (Steps 2-4) hidden initially -->
+                    <div id="guided-questions-container" class="mood-prompt-section hidden">
+                        <div class="flex-center-between" style="display: flex; justify-content: center; position: relative; margin-bottom: 12px;">
+                            <button id="guided-back-btn" class="back-btn" style="position: absolute; left: 10px; background: none; border: none; color: var(--spotify-green); font-weight: bold; cursor: pointer;">&lt; Back</button>
+                            <h2 id="guided-q-title" class="section-title text-center">Next Question</h2>
+                        </div>
+                        <div id="guided-q-options" class="mood-pills">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Discover Something New (Mock) -->
+                    <div class="section-block">
+                        <h2 class="section-title">Discover something new</h2>
+                        <div class="horizontal-scroll gap-small">
+                            <div class="story-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1493225457124-a1a2a5f5f9af?w=500&q=80'); background-size: cover;">
+                                <span class="story-tag">#hindi pop</span>
+                            </div>
+                            <div class="story-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500&q=80'); background-size: cover;">
+                                <span class="story-tag">#south asian sufi</span>
+                            </div>
+                            <div class="story-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1516280440502-0bd126b8b0e7?w=500&q=80'); background-size: cover;">
+                                <span class="story-tag">#sad</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Browse All (Mock) -->
+                    <div class="section-block">
+                        <h2 class="section-title">Browse all</h2>
+                        <div class="browse-grid">
+                            <div class="browse-card bg-magenta">Made For You</div>
+                            <div class="browse-card bg-teal">Upcoming releases</div>
+                            <div class="browse-card bg-green">New Releases</div>
+                            <div class="browse-card bg-blue-dark">Charts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Results (hidden by default) -->
+                <div id="recommendation-results" class="results-container hidden">
+                    <button id="results-back-btn" class="back-btn" style="background: none; border: none; color: var(--text-secondary); font-weight: bold; cursor: pointer; text-align: left; padding: 4px 0; width: fit-content;">&lt; New Search</button>
+                    <div class="results-heading">
+                        <h3 id="playlist-title">Your AI Custom Mix</h3>
+                        <span id="playlist-mode" class="badge">Balanced</span>
+                    </div>
+
+                    <!-- AI Reasoning -->
+                    <div id="ai-reasoning-box" class="reasoning-box hidden">
+                        <div class="reasoning-header">
+                            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none">
+                                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                            <span>AI Reasoning</span>
+                        </div>
+                        <div id="ai-reasoning-text" class="reasoning-text"></div>
+                    </div>
+
+                    <div id="tracks-list" class="tracks-list"></div>
+
+                    <!-- Feedback Section -->
+                    <div id="feedback-section" class="feedback-section hidden">
+                        <p>How was this mix?</p>
+                        <div class="feedback-buttons">
+                            <button class="feedback-btn" title="Thumbs Up">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                            </button>
+                            <button class="feedback-btn" title="Thumbs Down">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ========================================== -->
+        <!-- BOTTOM NAVIGATION -->
+        <!-- ========================================== -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" id="nav-home">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"></path></svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" id="nav-search">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.279-9.407-9.279zm-7.407 9.279c0-4.006 3.302-7.279 7.407-7.279s7.407 3.273 7.407 7.279-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.279z"></path></svg>
+                <span>Search</span>
+            </button>
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z"></path></svg>
+                <span>Your Library</span>
+            </button>
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm-11 9a11 11 0 1 1 22 0 11 11 0 0 1-22 0zM12 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 10.5c-2.485 0-4.5-2.015-4.5-4.5v-.5h9v.5c0 2.485-2.015 4.5-4.5 4.5z"></path></svg>
+                <span>Premium</span>
+            </button>
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2a1 1 0 0 1 1 1v8h8a1 1 0 0 1 0 2h-8v8a1 1 0 0 1-2 0v-8H3a1 1 0 0 1 0-2h8V3a1 1 0 0 1 1-1z"></path></svg>
+                <span>Create</span>
+            </button>
+        </nav>
+
+        <!-- ========================================== -->
+        <!-- VOICE OVERLAY -->
+        <!-- ========================================== -->
+        <div id="voice-overlay" class="voice-overlay hidden">
+            <div class="voice-modal">
+                <div class="voice-listening-row">
+                    <div class="voice-pulse-dot"></div>
+                    <h3 id="voice-status-label">Listening...</h3>
+                </div>
+                <div class="audio-wave" id="voice-wave">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+                <div class="voice-live-transcript">
+                    <span class="transcript-prefix">You said:</span>
+                    <span id="voice-transcript-live" class="transcript-live">speak now...</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
