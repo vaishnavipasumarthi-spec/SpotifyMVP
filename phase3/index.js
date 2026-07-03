@@ -2,7 +2,7 @@
 // Spotify AI Mood Discovery — Frontend JS
 // ==========================================
 
-const API_BASE = "http://127.0.0.1:8005/api/v1/discovery/session";
+const API_BASE = "/api/v1/discovery/session";
 
 // Views & Navigation
 const viewHome = document.getElementById("view-home");
