@@ -4,3 +4,4 @@ python-dotenv==1.0.1
 pydantic==2.6.1
 groq==0.4.2
 requests==2.31.0
+numpy==1.26.4
