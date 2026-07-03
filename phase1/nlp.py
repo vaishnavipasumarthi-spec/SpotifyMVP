@@ -69,7 +69,7 @@ class MoodNLPParser:
             return True
         return False
 
-    def _fallback_parse(self, text: str):
+    def _fallback_parse(self, text: str, error_msg: str = ""):
         """Keyword-based fallback when all Groq keys are unavailable."""
         valence_scores, energy_scores, tags = [], [], []
         text_lower = text.lower()
@@ -80,8 +80,12 @@ class MoodNLPParser:
                 energy_scores.append(config["energy"])
                 tags.extend(config["tags"])
 
+        reasoning = f"Offline fallback mode — keyword matched from: '{text}'"
+        if error_msg:
+            reasoning += f" | (Error: {error_msg})"
+
         return {
-            "thought_process": f"Offline fallback mode — keyword matched from: '{text}'",
+            "thought_process": reasoning,
             "valence": round(sum(valence_scores) / len(valence_scores), 2) if valence_scores else 0.5,
             "energy": round(sum(energy_scores) / len(energy_scores), 2) if energy_scores else 0.5,
             "danceability": 0.5,
@@ -97,7 +101,7 @@ class MoodNLPParser:
         Automatically rotates API keys on rate limit errors.
         """
         if not self.use_live:
-            return self._fallback_parse(query_text)
+            return self._fallback_parse(query_text, error_msg="No valid API keys found in environment.")
 
         prompt = f"""You are a world-class music curator with deep knowledge of all genres, languages, moods, artists, and global music trends — including Bollywood, Hollywood, K-Pop, Punjabi, Tamil, Telugu, and more.
 
@@ -181,7 +185,7 @@ Respond with ONLY valid JSON, no markdown, no extra text:
                     time.sleep(1)
                 else:
                     print(f"[ERROR] Groq API Error: {err[:150]}")
-                    break
+                    return self._fallback_parse(query_text, error_msg=err[:150])
 
         print("[WARN] All Groq keys failed. Using keyword fallback.")
-        return self._fallback_parse(query_text)
+        return self._fallback_parse(query_text, error_msg="All keys rate limited.")
